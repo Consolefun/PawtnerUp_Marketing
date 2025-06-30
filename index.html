@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawtnerUp - Where Local Pets Meet New Best Friends</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background Paw Prints -->
+    <div class="paw-prints">
+        <div class="paw-print paw-1">🐾</div>
+        <div class="paw-print paw-2">🐾</div>
+        <div class="paw-print paw-3">🐾</div>
+        <div class="paw-print paw-4">🐾</div>
+        <div class="paw-print paw-5">🐾</div>
+        <div class="paw-print paw-6">🐾</div>
+        <div class="paw-print paw-7">🐾</div>
+        <div class="paw-print paw-8">🐾</div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="pawtnerup-logo.png" alt="PawtnerUp Logo" class="logo-img">
+                <span>PawtnerUp</span>
+            </div>
+            <nav class="nav">
+                <a href="#features">Features</a>
+                <a href="#app-preview">App Preview</a>
+                <a href="#download">Download</a>
+                <a href="https://consolefun.github.io/PawtnerUp_Policies/" target="_blank">Policies</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span>🐕 New in Your Neighborhood 🐱</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Where Local Pets Meet 
+                        <span class="gradient-text">New Best Friends</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        PawtnerUp: The Social Network for You and Your Pet
+                    </p>
+                    <p class="hero-description">
+                        Find Playdates, Join Meetups, and Make Furry Friends Nearby. 
+                        Bringing Pet Lovers Together, One Paw at a Time.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary">
+                            <i class="fab fa-apple"></i>
+                            Download for iOS
+                        </button>
+                        <button class="btn-secondary">
+                            <i class="fab fa-google-play"></i>
+                            Download for Android
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-phone">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <img src="screenshots/home-screen.png" alt="PawtnerUp Home Screen" class="app-screenshot active" id="screenshot-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Pet Lovers Choose PawtnerUp</h2>
+                <p>Because pets are family—and families deserve community.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Meet Local Pet Lovers</h3>
+                    <p>Discover nearby dog parks, meetups, and playdates for your pets — and maybe even new friends for yourself.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>Host and Join Events</h3>
+                    <p>Create your own pet events or join local gatherings to help your pets socialize safely and naturally.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Build Your Pet's Social Life</h3>
+                    <p>Pets need friends too. PawtnerUp lets you grow your pet's circle while exploring your community.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe, Verified, Community-Driven</h3>
+                    <p>Join a trusted community of passionate pet owners who love making new connections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="app-preview" id="app-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2>See PawtnerUp in Action</h2>
+                <p>Every walk could be a new friendship waiting to happen.</p>
+            </div>
+
+            <div class="preview-content">
+                <div class="preview-tabs">
+                    <button class="tab-btn active" data-screen="home">
+                        <i class="fas fa-home"></i>
+                        <span>Discover Events</span>
+                    </button>
+                    <button class="tab-btn" data-screen="friends">
+                        <i class="fas fa-users"></i>
+                        <span>Connect Friends</span>
+                    </button>
+                    <button class="tab-btn" data-screen="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Pet Profiles</span>
+                    </button>
+                    <button class="tab-btn" data-screen="chat">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat & Meet</span>
+                    </button>
+                </div>
+
+                <div class="preview-phones">
+                    <div class="phone-showcase">
+                        <div class="phone-mockup large">
+                            <div class="phone-screen">
+                                <img src="screenshots/home-screen.png" alt="Home Screen" class="preview-screenshot active" data-screen="home">
+                                <img src="screenshots/friends-screen.png" alt="Friends Screen" class="preview-screenshot" data-screen="friends">
+                                <img src="screenshots/pet-profile.png" alt="Pet Profile" class="preview-screenshot" data-screen="profile">
+                                <img src="screenshots/chat-screen.png" alt="Chat Screen" class="preview-screenshot" data-screen="chat">
+                            </div>
+                        </div>
+                        <div class="phone-mockup secondary">
+                            <div class="phone-screen">
+                                <img src="screenshots/user-profile.png" alt="User Profile" class="secondary-screenshot">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-features">
+                    <div class="feature-highlight active" data-screen="home">
+                        <h3>🏠 Discover Local Events</h3>
+                        <p>Browse upcoming pet meetups, playdates, and community events in your area. Filter by location, pet type, and activity to find the perfect match.</p>
+                    </div>
+                    <div class="feature-highlight" data-screen="friends">
+                        <h3>🤝 Connect with Pet Parents</h3>
+                        <p>Build lasting friendships with fellow pet lovers. Send friend requests, chat, and plan regular meetups with like-minded pet parents.</p>
+                    </div>
+                    <div class="feature-highlight" data-screen="profile">
+                        <h3>🐾 Showcase Your Pet</h3>
+                        <p>Create detailed profiles for your furry friends. Share their personality, breed, age, and favorite activities to help them find compatible playmates.</p>
+                    </div>
+                    <div class="feature-highlight" data-screen="chat">
+                        <h3>💬 Safe Communication</h3>
+                        <p>Connect with other pet owners through secure in-app messaging. Plan meetups, share pet tips, and build your local pet community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emotional Appeal Section -->
+    <section class="emotional-appeal">
+        <div class="container">
+            <div class="appeal-content">
+                <div class="appeal-text">
+                    <h2>Make memories, not just walks.</h2>
+                    <p>It's not just an app. It's a lifestyle for you and your pet.</p>
+                    <p>Transform your daily walks into opportunities for connection. Turn lonely park visits into exciting social adventures. Give your pet the social life they deserve while building your own community of pet-loving friends.</p>
+                    <div class="appeal-stats">
+                        <div class="appeal-stat">
+                            <i class="fas fa-heart"></i>
+                            <span>15,000+ Happy Connections Made</span>
+                        </div>
+                        <div class="appeal-stat">
+                            <i class="fas fa-paw"></i>
+                            <span>Available in 50+ Cities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="appeal-visual">
+                    <div class="floating-emojis">
+                        <span class="emoji emoji-1">🐕</span>
+                        <span class="emoji emoji-2">🐱</span>
+                        <span class="emoji emoji-3">🐾</span>
+                        <span class="emoji emoji-4">❤️</span>
+                        <span class="emoji emoji-5">🎾</span>
+                        <span class="emoji emoji-6">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" id="download">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-text">
+                    <h2>Join the pack — download PawtnerUp today!</h2>
+                    <p>Find your pet's next best friend in your neighborhood.</p>
+                    <div class="download-buttons">
+                        <a href="#" class="download-btn ios">
+                            <div class="btn-content">
+                                <i class="fab fa-apple"></i>
+                                <div class="btn-text">
+                                    <span>Download on the</span>
+                                    <strong>App Store</strong>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="download-btn android">
+                            <div class="btn-content">
+                                <i class="fab fa-google-play"></i>
+                                <div class="btn-text">
+                                    <span>Get it on</span>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="download-note">
+                        <i class="fas fa-shield-alt"></i>
+                        Free to download • Safe & Secure • Community-Driven
+                    </p>
+                </div>
+                <div class="download-visual">
+                    <div class="phone-group">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <img src="screenshots/home-screen.png" alt="PawtnerUp App">
+                            </div>
+                        </div>
+                        <div class="phone-mockup offset">
+                            <div class="phone-screen">
+                                <img src="screenshots/pet-profile.png" alt="Pet Profile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="pawtnerup-logo.png" alt="PawtnerUp Logo" class="logo-img">
+                        <span>PawtnerUp</span>
+                    </div>
+                    <p>Connecting pets and their people through meaningful local experiences. Building community, love, and endless pawsome adventures.</p>
+                    <p>🐾 <strong>Made with love for pets and their families</strong></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Get In Touch</h3>
+                    <p>📧 pawtnerup@gmail.com</p>
+                    <p>🌍 Available in US & Europe</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal & Privacy</h3>
+                    <a href="https://consolefun.github.io/PawtnerUp_Policies/" target="_blank">Privacy Policy</a>
+                    <a href="https://consolefun.github.io/PawtnerUp_Policies/" target="_blank">Terms of Service</a>
+                    <a href="https://consolefun.github.io/PawtnerUp_Policies/" target="_blank">Community Guidelines</a>
+                    <a href="https://consolefun.github.io/PawtnerUp_Policies/" target="_blank">Child Safety Policy</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 PawtnerUp. All rights reserved.</p>
+                <p>Last updated: June 30, 2025 • Pet-friendly policies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
