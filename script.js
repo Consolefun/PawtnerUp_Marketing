@@ -66,24 +66,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Auto-cycle through app preview tabs
     let currentTabIndex = 0;
-    const autoTabCycle = setInterval(() => {
-        currentTabIndex = (currentTabIndex + 1) % tabButtons.length;
-        tabButtons[currentTabIndex].click();
-    }, 4000); // Change every 4 seconds
+    let autoTabCycleInterval = null;
+    let userInteractionTimeout = null;
+    let isUserInteracting = false;
 
-    // Pause auto-cycle when user interacts with tabs
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            clearInterval(autoTabCycle);
-            // Restart auto-cycle after 10 seconds of no interaction
-            setTimeout(() => {
-                currentTabIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
-                setInterval(() => {
-                    currentTabIndex = (currentTabIndex + 1) % tabButtons.length;
-                    tabButtons[currentTabIndex].click();
-                }, 4000);
-            }, 10000);
+    function startAutoTabCycle() {
+        // Clear any existing interval first
+        if (autoTabCycleInterval) {
+            clearInterval(autoTabCycleInterval);
+        }
+        
+        autoTabCycleInterval = setInterval(() => {
+            if (!isUserInteracting && tabButtons.length > 0) {
+                currentTabIndex = (currentTabIndex + 1) % tabButtons.length;
+                tabButtons[currentTabIndex].click();
+            }
+        }, 5000); // Change every 5 seconds (slower)
+    }
+
+    function stopAutoTabCycle() {
+        if (autoTabCycleInterval) {
+            clearInterval(autoTabCycleInterval);
+            autoTabCycleInterval = null;
+        }
+    }
+
+    function resetAutoTabCycle() {
+        isUserInteracting = true;
+        stopAutoTabCycle();
+        
+        // Clear existing timeout
+        if (userInteractionTimeout) {
+            clearTimeout(userInteractionTimeout);
+        }
+        
+        // Restart auto-cycle after 8 seconds of no interaction
+        userInteractionTimeout = setTimeout(() => {
+            isUserInteracting = false;
+            // Update current index to match active tab
+            const activeTabIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
+            if (activeTabIndex !== -1) {
+                currentTabIndex = activeTabIndex;
+            }
+            startAutoTabCycle();
+        }, 8000);
+    }
+
+    // Start the auto-cycle initially
+    startAutoTabCycle();
+
+    // Add click listeners to tabs
+    tabButtons.forEach((button, index) => {
+        button.addEventListener('click', (e) => {
+            // Only reset auto-cycle if this was a manual click
+            if (e.isTrusted) {
+                currentTabIndex = index;
+                resetAutoTabCycle();
+            }
         });
+    });
+
+    // Pause auto-cycle when page is not visible
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopAutoTabCycle();
+        } else if (!isUserInteracting) {
+            startAutoTabCycle();
+        }
     });
 
 
