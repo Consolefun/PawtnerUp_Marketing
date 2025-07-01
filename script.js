@@ -1,5 +1,48 @@
 // PawtnerUp Marketing Landing Page JavaScript
 
+// Beta Testing Modal Functions (Global scope for onclick handlers)
+function openBetaModal(selectedDevice) {
+    // Show modal
+    document.getElementById('betaModal').classList.add('show');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+    // Pre-select device radio button
+    if (selectedDevice) {
+        document.getElementById(selectedDevice).checked = true;
+    }
+}
+
+function closeBetaModal() {
+    // Hide modal
+    document.getElementById('betaModal').classList.remove('show');
+    document.body.style.overflow = ''; // Restore scrolling
+
+    // Reset form states
+    const betaForm = document.getElementById('betaForm');
+    if (betaForm) {
+        betaForm.reset();
+    }
+    
+    // Reset modal states
+    const modalHeader = document.querySelector('.modal-header');
+    const modalBody = document.querySelector('.modal-body');
+    const loadingState = document.getElementById('loadingState');
+    const successState = document.getElementById('successState');
+    
+    if (modalHeader) modalHeader.style.display = 'flex';
+    if (modalBody) modalBody.style.display = 'block';
+    if (loadingState) loadingState.style.display = 'none';
+    if (successState) successState.style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('betaModal');
+    if (event.target === modal) {
+        closeBetaModal();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     // Header scroll effect
     const header = document.querySelector('.header');
@@ -135,6 +178,54 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+
+    // Form Submission Handling
+    const betaForm = document.getElementById('betaForm');
+    if (betaForm) {
+        betaForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default behavior
+            document.querySelector('.modal-body').style.display = 'none';
+            document.getElementById('loadingState').style.display = 'block';
+
+            // Get form data
+            const email = document.getElementById('email').value;
+            const device = document.querySelector('input[name="device"]:checked').value;
+
+            console.log('Submitting beta form:', { email, device });
+
+            // Method 1: Try to determine field IDs by testing the form directly
+            // This will help us find the correct entry IDs
+            
+            // Create form data for Google Forms
+            const formData = new FormData();
+            
+            // Use the exact entry IDs from the Google Form
+            formData.append('entry.261145833', email); // Email field
+            formData.append('entry.37965319', device); // Device field
+
+            // Submit using Fetch API with FormData
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLScvrjPWH0SPQRpDl1EHLlj_AdMItULTup7GEpZhOSXgJ3NWcw/formResponse', {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                console.log('Form submitted successfully');
+                // Hide loading state
+                document.getElementById('loadingState').style.display = 'none';
+                // Hide modal header
+                document.querySelector('.modal-header').style.display = 'none';
+                // Hide modal body (form)
+                document.querySelector('.modal-body').style.display = 'none';
+                // Show success state
+                document.getElementById('successState').style.display = 'block';
+            }).catch((error) => {
+                console.error('Form submission error:', error);
+                document.getElementById('loadingState').style.display = 'none';
+                document.querySelector('.modal-body').style.display = 'block';
+                alert('Oops! There was an issue submitting your request. Please try again.');
+            });
+        });
+    }
 
     // Intersection Observer for animations
     const observerOptions = {

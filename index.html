@@ -57,13 +57,19 @@
                         Bringing Pet Lovers Together, One Paw at a Time.
                     </p>
                     <div class="hero-buttons">
-                        <button class="btn-primary">
+                        <button class="btn-primary" onclick="openBetaModal('ios')">
                             <i class="fab fa-apple"></i>
-                            Download for iOS
+                            <div class="btn-text-stack">
+                                <span>Join iOS Beta</span>
+                                <small>Testing Ready</small>
+                            </div>
                         </button>
-                        <button class="btn-secondary">
+                        <button class="btn-secondary" onclick="openBetaModal('android')">
                             <i class="fab fa-google-play"></i>
-                            Download for Android
+                            <div class="btn-text-stack">
+                                <span>Join Android Beta</span>
+                                <small>Testing Ready</small>
+                            </div>
                         </button>
                     </div>
                 </div>
@@ -231,28 +237,28 @@
                     <h2>Join the pack — download PawtnerUp today!</h2>
                     <p>Find your pet's next best friend in your neighborhood.</p>
                     <div class="download-buttons">
-                        <a href="#" class="download-btn ios">
+                        <button class="download-btn ios" onclick="openBetaModal('ios')">
                             <div class="btn-content">
                                 <i class="fab fa-apple"></i>
                                 <div class="btn-text">
-                                    <span>Download on the</span>
-                                    <strong>App Store</strong>
+                                    <span>Join Beta Test on</span>
+                                    <strong>iOS</strong>
                                 </div>
                             </div>
-                        </a>
-                        <a href="#" class="download-btn android">
+                        </button>
+                        <button class="download-btn android" onclick="openBetaModal('android')">
                             <div class="btn-content">
                                 <i class="fab fa-google-play"></i>
                                 <div class="btn-text">
-                                    <span>Get it on</span>
-                                    <strong>Google Play</strong>
+                                    <span>Join Beta Test on</span>
+                                    <strong>Android</strong>
                                 </div>
                             </div>
-                        </a>
+                        </button>
                     </div>
                     <p class="download-note">
-                        <i class="fas fa-shield-alt"></i>
-                        Free to download • Safe & Secure • Community-Driven
+                        <i class="fas fa-flask"></i>
+                        Beta Testing Available • Exclusive Features • Free Access
                     </p>
                 </div>
                 <div class="download-visual">
@@ -312,6 +318,72 @@
             </div>
         </div>
     </footer>
+
+    <!-- Beta Testing Modal -->
+    <div id="betaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🐾 Join PawtnerUp Beta Testing!</h2>
+                <span class="close" onclick="closeBetaModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="beta-info">
+                    <p><strong>Exclusive Beta Perks:</strong></p>
+                    <ul class="beta-perks">
+                        <li>🎯 Request features to be added to the app</li>
+                        <li>🆓 Free access to all current and new premium features</li>
+                        <li>🌟 Early access to new updates</li>
+                        <li>🏆 Direct feedback channel to development team</li>
+                    </ul>
+                </div>
+                
+                <form id="betaForm" class="beta-form">
+                    <div class="form-group">
+                        <label for="email">Your Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="device">Which device are you using? *</label>
+                        <div class="device-selector">
+                            <input type="radio" id="ios" name="device" value="Iphone" required>
+                            <label for="ios" class="device-option">
+                                <i class="fab fa-apple"></i>
+                                <span>iPhone</span>
+                            </label>
+                            
+                            <input type="radio" id="android" name="device" value="Android" required>
+                            <label for="android" class="device-option">
+                                <i class="fab fa-android"></i>
+                                <span>Android</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" onclick="closeBetaModal()">Cancel</button>
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Join Beta Testing
+                        </button>
+                    </div>
+                </form>
+                
+                <div id="loadingState" class="loading-state" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Submitting your beta request...</p>
+                </div>
+            </div>
+            
+            <!-- Success State - Outside modal-body -->
+            <div id="successState" class="success-state" style="display: none;">
+                <div class="success-icon">🎉</div>
+                <h3>Welcome to the PawtnerUp Beta Family!</h3>
+                <p>Thank you for joining our beta testing program. We will send you an email to download the app shortly!</p>
+                <button class="btn-close" onclick="closeBetaModal()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
