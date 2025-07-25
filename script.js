@@ -2,26 +2,13 @@
 
 // Beta Testing Modal Functions (Global scope for onclick handlers)
 function openBetaModal(selectedDevice) {
-    // Check if user is on iOS device and selected iOS beta
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    
-    if (selectedDevice === 'ios' && isIOS) {
-        // Redirect iOS users directly to TestFlight
-        window.location.href = 'https://testflight.apple.com/join/vnrMfy5t';
-        return;
-    }
-    
-    // Show modal for non-iOS users or Android selection
+    // Show modal for all users (no automatic redirect)
     document.getElementById('betaModal').classList.add('show');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
 
     // Pre-select device radio button
     if (selectedDevice) {
         document.getElementById(selectedDevice).checked = true;
-        // Show TestFlight info if iOS is selected
-        if (selectedDevice === 'ios') {
-            document.getElementById('iosTestFlightInfo').style.display = 'block';
-        }
     }
 }
 
@@ -41,13 +28,11 @@ function closeBetaModal() {
     const modalBody = document.querySelector('.modal-body');
     const loadingState = document.getElementById('loadingState');
     const successState = document.getElementById('successState');
-    const testFlightInfo = document.getElementById('iosTestFlightInfo');
     
     if (modalHeader) modalHeader.style.display = 'flex';
     if (modalBody) modalBody.style.display = 'block';
     if (loadingState) loadingState.style.display = 'none';
     if (successState) successState.style.display = 'none';
-    if (testFlightInfo) testFlightInfo.style.display = 'none';
 }
 
 // Close modal when clicking outside
@@ -59,18 +44,6 @@ window.addEventListener('click', function(event) {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Radio button listeners for device selection
-    const deviceRadios = document.querySelectorAll('input[name="device"]');
-    deviceRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
-            const testFlightInfo = document.getElementById('iosTestFlightInfo');
-            if (this.value === 'Iphone' && this.checked) {
-                testFlightInfo.style.display = 'block';
-            } else {
-                testFlightInfo.style.display = 'none';
-            }
-        });
-    });
     // Header scroll effect
     const header = document.querySelector('.header');
     let lastScrollTop = 0;
